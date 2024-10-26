@@ -1,3 +1,4 @@
+"use client";
 import {
   Command,
   GalleryVerticalEnd,
@@ -22,18 +23,19 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { SearchForm } from "./search-form";
+import { useSelectedLayoutSegment } from "next/navigation";
+import Link from "next/link";
 
 // Menu items.
 const main = [
   {
     title: "Listen Now",
-    url: "#",
+    url: "/listen-now",
     icon: PlayCircle,
-    isActive: true,
   },
   {
     title: "Browse",
-    url: "#",
+    url: "/browse",
     icon: LayoutGridIcon,
   },
   {
@@ -50,7 +52,7 @@ const library = [
     icon: Mic2,
   },
   {
-    title: "Album",
+    title: "Albums",
     url: "#",
     icon: GalleryVerticalEnd,
   },
@@ -80,6 +82,7 @@ const playlists = [
 ];
 
 export function AppSidebar() {
+  const segment = useSelectedLayoutSegment();
   return (
     <Sidebar>
       <SidebarHeader>
@@ -109,11 +112,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {main.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={item.isActive}>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={item.url === `/${segment}`}
+                  >
+                    <Link prefetch={true} href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

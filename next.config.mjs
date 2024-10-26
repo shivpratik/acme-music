@@ -18,6 +18,13 @@ const nextConfig = {
         pathname: "/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "c.saavncdn.com",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
     ],
   },
 };

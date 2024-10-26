@@ -6,8 +6,24 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function JustUpdated() {
+async function getAlbums(query) {
+  const url = `https://www.jiosaavn.com/api.php?p=1&q=${query}&_format=json&api_version=4&ctx=web6dot0&n=20&__call=search.getAlbumResults`;
+  const options = { method: "GET" };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data?.results;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default async function JustUpdated() {
+  const albums = await getAlbums("english");
   return (
     <Carousel
       opts={{
@@ -16,32 +32,41 @@ export default function JustUpdated() {
       className="w-full group px-5 md:px-10"
     >
       <CarouselContent>
-        {Array.from({ length: 10 }).map((_, index) => (
+        {albums.map((album, index) => (
           <CarouselItem
             key={index}
             className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
           >
-            <div className="p-0.5 space-y-2">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-3xl font-semibold">{index + 1}</span>
+            <Link className="p-0.5 space-y-2" href={`/album/${album.id}`}>
+              <Card className="overflow-hidden">
+                <CardContent className="flex aspect-square items-center justify-center p-0">
+                  <Image
+                    src={album.image}
+                    height={180}
+                    width={180}
+                    alt={album.title}
+                  />
                 </CardContent>
               </Card>
               <div className="space-y-1 text-sm">
-                <h3 className="font-medium leading-none">React Rendezvous</h3>
-                <p className="text-xs text-muted-foreground">Ethan Byte</p>
+                <h3 className="font-medium leading-none truncate">
+                  {album.title}
+                </h3>
+                <p className="text-xs text-muted-foreground truncate">
+                  {album.subtitle}
+                </p>
               </div>
-            </div>
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>
       <CarouselPrevious
         variant="ghost"
-        className="left-1 hidden md:group-hover:inline-flex"
+        className="left-1 top-1/3 mt-4 hidden md:group-hover:inline-flex"
       />
       <CarouselNext
         variant="ghost"
-        className="right-1 hidden md:group-hover:inline-flex"
+        className="right-1 top-1/3 mt-4 hidden md:group-hover:inline-flex"
       />
     </Carousel>
   );
