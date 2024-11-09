@@ -52,11 +52,11 @@ export default async function NewReleases({ albums }) {
       </CarouselContent>
       <CarouselPrevious
         variant="ghost"
-        className="left-1 top-1/3 mt-3 hidden md:group-hover:inline-flex"
+        className="left-1 top-1/3 mt-3 xl:mt-5 2xl:mt-8 hidden md:group-hover:inline-flex"
       />
       <CarouselNext
         variant="ghost"
-        className="right-1 top-1/3 mt-3 hidden md:group-hover:inline-flex"
+        className="right-1 top-1/3 mt-3 xl:mt-5 2xl:mt-8 hidden md:group-hover:inline-flex"
       />
     </Carousel>
   );

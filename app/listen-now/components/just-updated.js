@@ -63,11 +63,11 @@ export default async function JustUpdated() {
       </CarouselContent>
       <CarouselPrevious
         variant="ghost"
-        className="left-1 top-1/3 mt-4 hidden md:group-hover:inline-flex"
+        className="left-1 top-1/3 mt-4 xl:mt-6 2xl:mt-10 hidden md:group-hover:inline-flex"
       />
       <CarouselNext
         variant="ghost"
-        className="right-1 top-1/3 mt-4 hidden md:group-hover:inline-flex"
+        className="right-1 top-1/3 mt-4 xl:mt-6 2xl:mt-10 hidden md:group-hover:inline-flex"
       />
     </Carousel>
   );
