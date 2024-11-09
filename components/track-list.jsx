@@ -77,7 +77,18 @@ export function TrackList({ playlist }) {
     setPlaylist(playlist.songs);
   }, [playlist.songs, setPlaylist]);
 
-  return playlist?.songs?.map((track, index) => (
-    <TrackRow key={track.id} track={track} index={index} />
-  ));
+  return playlist?.songs.length > 0 ? (
+    playlist?.songs?.map((track, index) => (
+      <TrackRow key={track.id} track={track} index={index} />
+    ))
+  ) : (
+    <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+      <div className="flex flex-col items-center gap-1 text-center">
+        <h3 className="text-2xl font-bold tracking-tight">No Audio Tracks</h3>
+        <p className="text-sm text-muted-foreground">
+          There are no audio tracks available in this album or playlist
+        </p>
+      </div>
+    </div>
+  );
 }
