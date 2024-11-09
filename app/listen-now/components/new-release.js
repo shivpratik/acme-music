@@ -14,6 +14,7 @@ export default async function NewReleases({ albums }) {
     <Carousel
       opts={{
         align: "start",
+        slidesToScroll: "auto",
       }}
       className="w-full group px-5 md:px-10"
     >
@@ -30,9 +31,9 @@ export default async function NewReleases({ albums }) {
               <Card className="overflow-hidden">
                 <CardContent className="flex aspect-square items-center justify-center p-0">
                   <Image
-                    src={album.image}
-                    height={150}
-                    width={150}
+                    src={album.image.replace("150x150", "250x250")}
+                    height={250}
+                    width={250}
                     alt={album.title}
                   />
                 </CardContent>

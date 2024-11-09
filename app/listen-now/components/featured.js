@@ -14,6 +14,7 @@ export default function Featured({ albums }) {
     <Carousel
       opts={{
         align: "start",
+        slidesToScroll: "auto",
       }}
       className="w-full group px-5 md:px-10"
     >
