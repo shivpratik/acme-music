@@ -41,6 +41,9 @@ export default function Featured({ albums }) {
                     alt={album.title}
                     height={384}
                     width={384}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/spinning-dots.svg"
                   />
                 </CardContent>
               </Card>

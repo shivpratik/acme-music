@@ -46,6 +46,9 @@ export default async function JustUpdated() {
                     height={350}
                     width={350}
                     alt={album.title}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/spinning-dots.svg"
                   />
                 </CardContent>
               </Card>

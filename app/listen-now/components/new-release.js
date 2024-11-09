@@ -35,6 +35,9 @@ export default async function NewReleases({ albums }) {
                     height={250}
                     width={250}
                     alt={album.title}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/spinning-dots.svg"
                   />
                 </CardContent>
               </Card>
