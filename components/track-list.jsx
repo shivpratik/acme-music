@@ -24,7 +24,7 @@ function TrackRow({ track, index }) {
 
   return (
     <div className="flex flex-row items-center justify-between space-x-2 bg-secondary rounded-md py-2 px-4 text-sm group">
-      <div className="flex flex-row items-center justify-start space-x-2">
+      <div className="flex flex-row items-center justify-start space-x-2 truncate">
         {isCurrentTrack && isPlaying ? (
           <div className="relative flex items-center justify-center h-6 w-6">
             <div className="flex items-center justify-center space-x-[2px] h-6 w-6 mx-auto group-hover:hidden">
@@ -49,9 +49,12 @@ function TrackRow({ track, index }) {
           </div>
         )}
         <div className="flex flex-col leading-none space-y-1 truncate">
-          <div dangerouslySetInnerHTML={{ __html: track.name }}></div>
           <div
-            className="text-muted-foreground"
+            className="truncate"
+            dangerouslySetInnerHTML={{ __html: track.name }}
+          ></div>
+          <div
+            className="text-muted-foreground truncate"
             dangerouslySetInnerHTML={{
               __html: track.artists.primary
                 .map((artist) => artist.name)
