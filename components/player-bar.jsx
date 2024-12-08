@@ -119,13 +119,13 @@ export function TrackInfo() {
       </div>
       {currentTrack ? (
         <div className="bg-secondary flex flex-col grow h-full truncate">
-          <div className="flex flex-col grow justify-center text-center text-sm px-2">
+          <div className="flex flex-col grow justify-center text-center text-sm px-2 pb-2.5 [mask-image:linear-gradient(90deg,transparent_1%,#000_15%,#000_85%,transparent_99%)]">
             <p
-              className="font-semibold"
+              className="font-semibold truncate"
               dangerouslySetInnerHTML={{ __html: currentTrack.name }}
             ></p>
             <p
-              className="text-muted-foreground truncate"
+              className="text-muted-foreground leading-none truncate"
               dangerouslySetInnerHTML={{
                 __html: `${currentTrack.artists.primary
                   .map((artist) => artist.name)

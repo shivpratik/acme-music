@@ -78,11 +78,16 @@ module.exports = {
           "0%, 100%": { height: "0.3rem" },
           "50%": { height: "0.6rem" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "now-playing-1": "now-playing-1 0.8s ease-in-out infinite",
         "now-playing-2": "now-playing-2 1s ease-in-out infinite",
         "now-playing-3": "now-playing-3 1.2s ease-in-out infinite",
+        marquee: "marquee 25s linear infinite",
       },
     },
   },
