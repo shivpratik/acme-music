@@ -39,6 +39,7 @@ export function PlaybackProvider({ children }) {
 
     audioRef.current = new Howl({
       src: url,
+      html5: true,
       onload: () => {
         setCurrentTrack(track);
         setDuration(audioRef.current.duration());
